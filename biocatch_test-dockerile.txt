@@ -1,0 +1,9 @@
+FROM python:latest
+WORKDIR /app
+RUN pip install flask
+RUN pip install -i https://test.pypi.org/simple/ biocatch2
+COPY ./app.py /app
+COPY ./tests.py /app
+RUN cd /app
+ENTRYPOINT python tests.py
+

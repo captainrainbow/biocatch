@@ -1,0 +1,23 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biocatch-deployment
+  labels:
+    app: biocatch
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: biocatch
+  template:
+    metadata:
+      labels:
+        app: biocatch
+    spec:
+      containers:
+      - name: biocatch
+        image: biocatch:4
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
